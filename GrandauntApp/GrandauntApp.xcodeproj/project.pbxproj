@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2724EA98244F4577001645A4 /* GrandauntADLaunch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724EA96244F4577001645A4 /* GrandauntADLaunch.m */; };
+		2724EA99244F4577001645A4 /* IMYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2724EA97244F4577001645A4 /* IMYWebViewController.m */; };
 		45B889BCBFD646D8921A47DB /* Pods_GrandauntApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD5840FF6FA6017A76D5D7E /* Pods_GrandauntApp.framework */; };
 		BE1AE6AE244EC8DE005A9C59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1AE6AD244EC8DE005A9C59 /* AppDelegate.m */; };
 		BE1AE6BC244EC8E2005A9C59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE1AE6BA244EC8E2005A9C59 /* LaunchScreen.storyboard */; };
@@ -128,6 +130,10 @@
 
 /* Begin PBXFileReference section */
 		03263B0D1710F9E260E0DFEC /* Pods-GrandauntApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrandauntApp.debug.xcconfig"; path = "Target Support Files/Pods-GrandauntApp/Pods-GrandauntApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2724EA94244F4576001645A4 /* GrandauntADLaunch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrandauntADLaunch.h; sourceTree = "<group>"; };
+		2724EA95244F4576001645A4 /* IMYWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMYWebViewController.h; sourceTree = "<group>"; };
+		2724EA96244F4577001645A4 /* GrandauntADLaunch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrandauntADLaunch.m; sourceTree = "<group>"; };
+		2724EA97244F4577001645A4 /* IMYWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMYWebViewController.m; sourceTree = "<group>"; };
 		BE1AE6A9244EC8DE005A9C59 /* GrandauntApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrandauntApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1AE6AC244EC8DE005A9C59 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE1AE6AD244EC8DE005A9C59 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -349,6 +355,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2724EA93244F4560001645A4 /* ADPage */ = {
+			isa = PBXGroup;
+			children = (
+				2724EA94244F4576001645A4 /* GrandauntADLaunch.h */,
+				2724EA96244F4577001645A4 /* GrandauntADLaunch.m */,
+				2724EA95244F4576001645A4 /* IMYWebViewController.h */,
+				2724EA97244F4577001645A4 /* IMYWebViewController.m */,
+			);
+			path = ADPage;
+			sourceTree = "<group>";
+		};
 		8450F6F7476F9F8600F876F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +411,7 @@
 				BE1AE79F244EDF4D005A9C59 /* Category */,
 				BE1AE791244ED868005A9C59 /* ThirdClasses */,
 				BE1AE713244ED009005A9C59 /* LoginPage */,
+				2724EA93244F4560001645A4 /* ADPage */,
 				BE1AE763244ED009005A9C59 /* MainPage */,
 				BE1AE724244ED009005A9C59 /* MoneyMarketPage */,
 				BE1AE733244ED009005A9C59 /* NewsPage */,
@@ -1136,6 +1154,7 @@
 				BE1AE80D244EE05C005A9C59 /* UIView+Layout.m in Sources */,
 				BE1AE76D244ED00A005A9C59 /* LoginViewController.m in Sources */,
 				BE1AE6AE244EC8DE005A9C59 /* AppDelegate.m in Sources */,
+				2724EA99244F4577001645A4 /* IMYWebViewController.m in Sources */,
 				BE1AE783244ED00A005A9C59 /* ShareViewController.m in Sources */,
 				BE1AE70D244ECFF5005A9C59 /* HomeNewsModel.m in Sources */,
 				BE1AE7A5244EDFDB005A9C59 /* AlerShowManager.m in Sources */,
@@ -1169,6 +1188,7 @@
 				BE1AE7F9244EE05C005A9C59 /* UIImage+Rotate.m in Sources */,
 				BE1AE80E244EE05C005A9C59 /* UIView+HUDExtensions.m in Sources */,
 				BE1AE77E244ED00A005A9C59 /* NormalTableViewCell.m in Sources */,
+				2724EA98244F4577001645A4 /* GrandauntADLaunch.m in Sources */,
 				BE1AE806244EE05C005A9C59 /* NSString+SHA.m in Sources */,
 				BE1AE710244ECFF5005A9C59 /* HomeNewsCell.m in Sources */,
 				BE1AE7A2244EDF72005A9C59 /* UINavigationBar+BackImageView.m in Sources */,
