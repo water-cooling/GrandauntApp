@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Bytedance-UnionAD (1.9.8.5)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJExtension (3.2.1)
@@ -46,6 +47,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - Bytedance-UnionAD (~> 1.9.8.5)
   - Masonry (~> 1.1.0)
   - MBProgressHUD (~> 1.1.0)
   - MJExtension
@@ -65,6 +67,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - Bytedance-UnionAD
     - Masonry
     - MBProgressHUD
     - MJExtension
@@ -80,6 +83,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bytedance-UnionAD: a977fe9f56cd0832ea2e0c88ed9944f560e52935
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
@@ -93,6 +97,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: e0cef55c0fd6051254c8cda1d0630eb578b27bad
 
-PODFILE CHECKSUM: f262e35fc25d334a6ae6ec22043cf9d0d3601d41
+PODFILE CHECKSUM: 6a8e1ea96e3cf70183fbd87b93efe105ba14bcc7
 
 COCOAPODS: 1.8.3

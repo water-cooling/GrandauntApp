@@ -102,8 +102,6 @@
 		BE1AE89F24501767005A9C59 /* StudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1AE89E24501767005A9C59 /* StudyViewController.m */; };
 		BE1AE8A62450184C005A9C59 /* DepartMentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1AE8A42450184C005A9C59 /* DepartMentViewController.m */; };
 		BE1AE8AD24501C17005A9C59 /* MakeMoneyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1AE8AB24501C16005A9C59 /* MakeMoneyViewController.m */; };
-		BE443E25245036080074FCAE /* BUAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE443E23245036080074FCAE /* BUAdSDK.framework */; };
-		BE443E26245036080074FCAE /* BUAdSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE443E24245036080074FCAE /* BUAdSDK.bundle */; };
 		BE443E28245036840074FCAE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE443E27245036840074FCAE /* StoreKit.framework */; };
 		BE443E2A2450368D0074FCAE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE443E292450368D0074FCAE /* MobileCoreServices.framework */; };
 		BE443E2C245036940074FCAE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE443E2B245036940074FCAE /* WebKit.framework */; };
@@ -329,8 +327,6 @@
 		BE1AE8A42450184C005A9C59 /* DepartMentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartMentViewController.m; sourceTree = "<group>"; };
 		BE1AE8AA24501C16005A9C59 /* MakeMoneyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeMoneyViewController.h; sourceTree = "<group>"; };
 		BE1AE8AB24501C16005A9C59 /* MakeMoneyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeMoneyViewController.m; sourceTree = "<group>"; };
-		BE443E23245036080074FCAE /* BUAdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BUAdSDK.framework; sourceTree = "<group>"; };
-		BE443E24245036080074FCAE /* BUAdSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BUAdSDK.bundle; sourceTree = "<group>"; };
 		BE443E27245036840074FCAE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BE443E292450368D0074FCAE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BE443E2B245036940074FCAE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -374,7 +370,6 @@
 				BE443E38245036C20074FCAE /* SystemConfiguration.framework in Frameworks */,
 				BE443E32245036AB0074FCAE /* CoreLocation.framework in Frameworks */,
 				BE443E2E2450369C0074FCAE /* MediaPlayer.framework in Frameworks */,
-				BE443E25245036080074FCAE /* BUAdSDK.framework in Frameworks */,
 				BE443E30245036A40074FCAE /* CoreMedia.framework in Frameworks */,
 				BE443E482450373C0074FCAE /* ImageIO.framework in Frameworks */,
 			);
@@ -853,7 +848,6 @@
 		BE1AE864244FD403005A9C59 /* ThirdClasses */ = {
 			isa = PBXGroup;
 			children = (
-				BE443E1E245035D90074FCAE /* BUSDK */,
 				BE1AE88B244FF3DE005A9C59 /* FGScrollview */,
 				BE1AE877244FEA6D005A9C59 /* SKTagView */,
 				BE1AE865244FD420005A9C59 /* MOCNetworking */,
@@ -1011,15 +1005,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		BE443E1E245035D90074FCAE /* BUSDK */ = {
-			isa = PBXGroup;
-			children = (
-				BE443E24245036080074FCAE /* BUAdSDK.bundle */,
-				BE443E23245036080074FCAE /* BUAdSDK.framework */,
-			);
-			path = BUSDK;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1128,7 +1113,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE1AE6E3244EC9D3005A9C59 /* Main.storyboard in Resources */,
-				BE443E26245036080074FCAE /* BUAdSDK.bundle in Resources */,
 				BE1AE85D244FD3E1005A9C59 /* OwnShareViewController.xib in Resources */,
 				BE1AE858244FD3E1005A9C59 /* ShareViewController.xib in Resources */,
 				BE1AE712244ECFF5005A9C59 /* HomeNewsCell.xib in Resources */,
