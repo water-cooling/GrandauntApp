@@ -11,11 +11,7 @@
 #import "EleokeHomePolicyController.h"
 #import "SeachHistoryView.h"
 #import "BaseNavigationController.h"
-#import "FGContentView.h"
-#import "FGScrollSegmentView.h"
 #import "SignViewController.h"
-#import "SignUntility.h"
-#import "UserUtility.h"
 @interface HomeViewController ()<UISearchBarDelegate,HistoryDidSelectDelegate,FGScrollviewDelegate>
 @property (nonatomic,strong)UISearchBar * searchbar;
 
@@ -43,11 +39,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.segmentView];
-    
     [self.view addSubview:self.contentView];
-    
     UIView * view = [[UIView alloc]init];
 
      self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -82,24 +76,6 @@
 
 -(void)login{
     
-    [SignUntility GetSignTimescallback:^(SignResponseModel *response, FGError *error) {
-        
-        if (!error) {
-            
-            
-            [self.sign loginChangeUI:response];
-
-                
-        }else
-        {
-            
-            [EleokeShowManager showBriefAlert:error.descriptionStr];
-            
-        }
-        
-        
-    }];
-    
 }
 
 - (void)DeleteHistoryData
@@ -111,7 +87,6 @@
         self.history.dataSource = self.dataSource;
         
         [NSKeyedArchiver archiveRootObject:self.dataSource toFile:KHistorySearchPath];
-        
     }
 }
 
@@ -139,80 +114,10 @@
     if (![[NSUserDefaults standardUserDefaults]objectForKey:@"readArticleNum"]) {
         
         [[NSUserDefaults standardUserDefaults]setObject:@(5) forKey:@"readArticleNum"];
-        
     }
-    
-    [SignUntility GetSignListcallback:^(SignListdataModel *data, FGError *error) {
-        
-        if (!error) {
-            
-            if ([UserUtility hasLogin]) {
-                
-                [self LoadingSignDay:data];
-
-            }else
-            {
-                SignViewController * sign = [[SignViewController alloc]initWithNibName:@"SignViewController" bundle:nil];
-                
-                sign.ListModel = data;
-                
-                sign.definesPresentationContext = YES;
-                
-                sign.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-                
-                self.sign = sign;
-                
-                [self.navigationController  presentViewController:sign animated:NO completion:nil];
-            }
-            [userDefault setObject:now forKey:@"nowDate"];
-            
-            [userDefault synchronize];
-            
-            
-        }else{
-            
-            [EleokeShowManager showBriefAlert:error.descriptionStr];
-            
-        }
-        
-    }];
-    
-
-
+ 
 }
 
--(void)LoadingSignDay:(SignListdataModel * )model{
-    
-    [SignUntility GetSignTimescallback:^(SignResponseModel *response, FGError *error) {
-        
-        if (!error) {
-            
-            
-            SignViewController * sign = [[SignViewController alloc]initWithNibName:@"SignViewController" bundle:nil];
-            
-            sign.ListModel = model;
-            
-            sign.stateModel = response;
-            
-            sign.definesPresentationContext = YES;
-            
-            sign.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-                
-            [self.navigationController  presentViewController:sign animated:NO completion:nil];
-            
-      
-        }else
-        {
-            
-            [EleokeShowManager showBriefAlert:error.descriptionStr];
-            
-        }
-        
-        
-    }];
-  
-    
-}
 
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -359,7 +264,7 @@
 
     if (searchBar.text == nil || [searchBar.text length] <= 0) {
         
-        [EleokeShowManager showBriefAlert:@"请输入搜索内容"];
+        [AlerShowManager showBriefAlert:@"请输入搜索内容"];
 
         return;
         
@@ -405,7 +310,7 @@
 
     if (self.searchbar.text == nil || [self.searchbar.text length] <= 0) {
         
-        [EleokeShowManager showBriefAlert:@"请输入搜索内容"];
+        [AlerShowManager showBriefAlert:@"请输入搜索内容"];
         
         return;
         

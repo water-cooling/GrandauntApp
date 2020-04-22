@@ -5,6 +5,7 @@
 //  Created by lihaibo on 16/5/26.
 //  Copyright © 2016年 xitai. All rights reserved.
 //
+#import "BaseNavigationController.h"
 
 @interface BaseNavigationController ()<UIGestureRecognizerDelegate,UINavigationControllerDelegate>
 @property(nonatomic,strong) UIViewController* currentShowVC;

@@ -1,7 +1,6 @@
- 
+source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
-source 'https://github.com/CocoaPods/Specs.git'
 target 'GrandauntApp' do
  pod 'SDWebImage', '~> 4.3.3'
  pod 'MBProgressHUD', '~> 1.1.0'
@@ -21,8 +20,7 @@ target 'GrandauntApp' do
     pod 'UMCShare/Social/ReducedQQ'
     # 集成新浪微博(精简版1M)
     pod 'UMCShare/Social/ReducedSina'
-  
- 
+    pod 'RegexKitLite', '4.0'
  end
 
 

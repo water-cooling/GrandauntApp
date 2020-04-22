@@ -5,7 +5,6 @@
 //  Created by yltx on 2019/5/5.
 //  Copyright © 2019年 com.yltx.ZR.share. All rights reserved.
 //
-
 static NSString *bgViewKey = @"bgViewKey";
 
 
@@ -55,7 +54,7 @@ static NSString *bgViewKey = @"bgViewKey";
         MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         
         // 设置字体
-        footer.stateLabel.font = [UIFont systemFontOfSize:15.0 weight:FONT_WEIGHT_THIN];
+        footer.stateLabel.font = [UIFont systemFontOfSize:15.0 weight:UIFontWeightThin];
         [footer setTitle:@"" forState:MJRefreshStateIdle];
         // 设置颜色
         footer.stateLabel.textColor = [UIColor blackColor];

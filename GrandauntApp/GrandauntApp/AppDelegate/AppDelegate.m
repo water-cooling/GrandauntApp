@@ -10,10 +10,8 @@
 #import <UMShare/UMShare.h>
 #import <UMCommon/UMCommon.h>
 #import <UMAnalytics/MobClick.h>
-
 #import <UMSocialSinaHandler.h>
 #import <UMSocialWechatHandler.h>
-#import "LaunchIntroductionView.h"
 #import <UMSocialQQHandler.h>
 #import <UMShare/UMShare.h>
 @interface AppDelegate ()
@@ -22,25 +20,12 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
     [self configUSharePlatforms];
-    
     [UMConfigure setLogEnabled:YES];
-    
-    [LaunchIntroductionView sharedWithStoryboard:@"Main" images:@[@"launch0",@"launch1",@"launch2"] buttonImage:@"login" buttonFrame:CGRectMake(UISCREENWIDTH-80, SafeAreaTopHeight ? 48:28, 60, 25)];
-
-    
     [UMConfigure initWithAppkey:@"5d9ee4574ca357b5b10007c9" channel:@"App Store"];
-    
     [[UMSocialManager defaultManager] openLog:YES];
-    
     [MobClick setCrashReportEnabled:YES];
-
-  
-    
     return YES;
 }
 

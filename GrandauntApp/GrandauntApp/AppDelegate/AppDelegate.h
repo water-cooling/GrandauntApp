@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+@property (nonatomic, assign) BOOL isNetWork;
+@property (strong, nonatomic) UIWindow *window;
 
 @end
 

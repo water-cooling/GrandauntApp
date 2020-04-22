@@ -19,7 +19,7 @@
 ///在load 方法中，启动监听，可以做到无注入
 + (void)load
 {
-    [self shareInstance];
+//    [self shareInstance];
 }
 + (instancetype)shareInstance
 {
@@ -30,8 +30,7 @@
     });
     return instance;
 }
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     if (self) {
         

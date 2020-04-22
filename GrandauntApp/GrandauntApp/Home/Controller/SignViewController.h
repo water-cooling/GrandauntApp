@@ -8,15 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SignUntility.h"
-
 @interface SignViewController : UIViewController
-
-@property (nonatomic,strong)SignListdataModel * ListModel;
-
-@property (nonatomic,strong)SignResponseModel * stateModel;
-
--(void)loginChangeUI:(SignResponseModel *)response;
 
 @property(nonatomic,strong) NSString *pahi;
 

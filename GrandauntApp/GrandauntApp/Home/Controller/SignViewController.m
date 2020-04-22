@@ -7,8 +7,6 @@
 //
 
 #import "SignViewController.h"
-#import "SignUntility.h"
-#import "UserUtility.h"
 #import "BaseNavigationController.h"
 
 @interface SignViewController ()
@@ -72,9 +70,7 @@
 
         speatorview.backgroundColor = [UIColor colorWithHexString:@"#CCCCCC"];
 
-        SignListModel * model = self.ListModel.response[i];
         
-        bottomLab.text = [NSString stringWithFormat:@"第%@天",model.day];
         
         bottomLab.textAlignment = NSTextAlignmentCenter;
         
@@ -84,7 +80,6 @@
 
         CGFloat btnx = 15 + (30 + 18)*i;
         
-        [cornerbtn setTitle:[NSString stringWithFormat:@"+%@",model.pearlNum] forState:UIControlStateNormal];
         
         cornerbtn.layer.borderWidth = 1;
         
@@ -112,11 +107,7 @@
         bottomLab.frame = CGRectMake(cornerbtn.x,  CGRectGetMaxY(cornerbtn.frame) + 10, cornerbtn.width, 12);
         
     }
-    if (self.stateModel) {
-        
-        [self changeValve];
-
-    }
+  
     
 }
 - (IBAction)DIsmiss:(UIControl *)sender {
@@ -128,128 +119,15 @@
 }
 
 
-- (void)loginChangeUI:(SignResponseModel *)response
-{
-    self.stateModel = response;
-    
-    [self changeValve];
-    
-}
+
 
 -(void)changeValve{
-    
-    for (int i = 0; i < self.stateModel.sginNum; i++) {
-        
-        UIButton * cornerbtn = self.ClickArr[i];
-        
-        UILabel * speatorlab =   self.SpeatorArr[i];
- 
-        speatorlab.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
-        
-        cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
-        
-        [cornerbtn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
-        
-        [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#F98040"]];
-      }
-    
-    if ( !self.stateModel.todaySignIn) {
-        
-        UIButton * cornerbtn = self.ClickArr[self.stateModel.sginNum];
 
-        [cornerbtn setTitleColor:[UIColor colorWithHexString:@"#F98040"] forState:UIControlStateNormal];
-        
-        [cornerbtn setBackgroundColor:[UIColor colorWithHexString:@"#FFFFFF"]];
-        
-        cornerbtn.layer.borderColor = [UIColor colorWithHexString:@"#F98040"].CGColor;
-
-        
-    }
+  
     
 }
 - (IBAction)signNowclick:(UIButton *)sender {
-    
-    if ([UserUtility hasLogin]) {
-    
-    sender.userInteractionEnabled = NO;
-    
-    if (!self.stateModel.todaySignIn) {
-        
-        UIButton * btn =  self.ClickArr[self.stateModel.sginNum];
-        
-            [SignUntility SignClickcallback:^(SucceedModel *response, FGError *error) {
-                
-                sender.userInteractionEnabled = YES;
-                
-                if (!error) {
-                    
-                    btn.backgroundColor = [UIColor colorWithHexString:@"#F98040"];
-                    
-                    [btn setTitleColor:[UIColor colorWithHexString:@"FFFFFF"] forState:UIControlStateNormal];
-                    
-                    
-                    [self.showView removeFromSuperview];
-                    
-                    NSString * LabelText;
-                    if (!response.signIn ) {
-                        
-                        LabelText = response.shareArticle;
-                        
-                    }else{
-                    
-                        LabelText = [NSString stringWithFormat:@"恭喜你，今日签到成功 %@ 糖果",response.pearlNum];
-                    }
-                    
-                    NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc]initWithString:LabelText];
-                    
-                    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-                    
-                    paragraphStyle.alignment = NSTextAlignmentCenter;
-                    
-                    [attributedString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, [LabelText length])];
-                    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFang-SC-Regular" size:17] range:NSMakeRange(0, LabelText.length)];
-                    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#1A1A1A"] range:NSMakeRange(0, LabelText.length)];
-                    
-                    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#F98040"] range: [LabelText rangeOfString:btn.titleLabel.text]];
-                    
-                    self.ShowLab.attributedText = attributedString;
-                    
-                    [self.ShowLab sizeToFit];
-                    
-                    [UIView animateWithDuration:0.3 animations:^{
-                        
-                        self.ShowStateImg.hidden = NO;
-                        
-                    }];
-                    
-                }else
-                {
-                    
-                    [EleokeShowManager showBriefAlert:error.descriptionStr];
-                    
-                }
-                
-            }];
-        }else
-        {
-            
-            [EleokeShowManager showBriefAlert:@"当天您已经签到过了"];
-            
-        }
-    }else
-    {
-        
-        
-        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        
-        BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"BaseNavigationController"];
-        
-        [self presentViewController:vc animated:YES completion:nil];
-        
-
-        
-    }
-    
+  
     
 }
 

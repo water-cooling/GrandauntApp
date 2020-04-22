@@ -6,6 +6,8 @@
 //  Copyright © 2017年 huangpf. All rights reserved.
 //
 #import "BaseViewController.h"
+#import "LoginViewController.h"
+#import "UINavigationBar+BackImageView.h"
 @interface BaseViewController ()
 @property(nonatomic,strong)UIView * bgView;
 @end
@@ -27,7 +29,7 @@
 }
 
 -(void)viewDidLayoutSubviews{
-    [self.navigationBar  KPHideShadowImagebackImageColor :[UIColor colorWithHexString:@"#F98040"]];
+    [self.navigationController.navigationBar  KPHideShadowImagebackImageColor :[UIColor colorWithHexString:@"#F98040"]];
 }
 
 
@@ -108,7 +110,7 @@
     if (isFooterRefresh) {
         MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
         // 设置字体
-        footer.stateLabel.font = [UIFont systemFontOfSize:15.0 weight:FONT_WEIGHT_THIN];
+        footer.stateLabel.font = [UIFont systemFontOfSize:15.0 weight:UIFontWeightThin];
         [footer setTitle:@"" forState:MJRefreshStateIdle];
         // 设置颜色
         footer.stateLabel.textColor = [UIColor blackColor];
@@ -128,26 +130,14 @@
     [self reloadFooterTableViewDataSource];
 }
 
--(void)addLoginBottomLbl{
-    MJWeakSelf;
-    UILabel * bottomImg = [[UILabel alloc]init];
-    bottomImg.textColor = RGBColor(0x080808, 1);
-    bottomImg.font= kFont(12);
-    bottomImg.text = @"©2017 FIS. Empowering the Financial World ™";
-    [self.view addSubview:bottomImg];
-    [bottomImg mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(weakSelf.view.mas_bottom).offset(-35);
-        make.centerX.equalTo(weakSelf.view.mas_centerX);
-    }];
-}
 
 -(void)pushLogin{
 }
 
 -(void)turnToLogin{
-    LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:login];
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+   UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BaseNavigationController *vc = [story instantiateViewControllerWithIdentifier:@"LoginNavi"];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 -(UIView *)noNetOrNodataView:(NSInteger)flag tableViewFrame:(CGRect)frame{
@@ -191,117 +181,6 @@
     if (@available(iOS 11.0, *)) {
         scroller.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     }
-}
-
--(void)turnToOrderDetail:(NSInteger)type detailRowId:(NSString *)detailRowId vctype:(NSString *)vcType{
-    NSMutableDictionary * parameter = [[NSMutableDictionary alloc]initWithCapacity:0];
-    switch (type) {
-        case 0:{
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:@"NewHomePageViewController" forKey:@"vcType"];
-            [Common pushUrl:@"FillOilOrderDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-        case 1:{
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:vcType forKey:@"vcType"];
-            [Common pushUrl:@"RechargeableCardDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-        case 2:{
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:@"MyWebViewController" forKey:@"vcType"];
-            [Common pushUrl:@"FillOilCardOrderDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-        case 3:{
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:vcType forKey:@"vcType"];
-            [Common pushUrl:@"ProductOrderDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-        case 4:{
-            //蓄油卡
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:vcType forKey:@"vcType"];
-            [Common pushUrl:@"StorageOilOrderDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-        case 5:{
-            //储值卡
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:vcType forKey:@"vcType"];
-            [Common pushUrl:@"StoredCardOrderDetailViewController" withTarget:self withParamer:parameter];
-        }
-            break;
-            
-        case 7:{
-            //开发票
-            [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-            [parameter setObject:@"OpenInvoiceListViewController" forKey:@"vcType"];
-            [Common pushUrl:@"InvoiceOrderDetailViewController" withTarget:self withParamer:parameter];
-            
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-}
-
-///  0:加油 1:充值卡 2:加油卡 3:商品 4:油品贸易  5:储值卡 6.提现
--(void)turnCompletionVc:(NSInteger)type detailRowId:(NSString *)detailRowId vctype:(NSString *)vcType payAmt:(NSString *)payAmt orderCode:(NSString *)orderCode cardVoucher:(NSString *)cardVoucher{
-    
-    NSMutableDictionary * parameter = [[NSMutableDictionary alloc]initWithCapacity:0];
-    
-    [parameter setObject:detailRowId?detailRowId:@"" forKey:@"rowId"];
-    [parameter setObject:payAmt?payAmt:@"" forKey:@"payMoney"];
-    [parameter setObject:orderCode forKey:@"orderCode"];
-    [parameter setObject:vcType forKey:@"vcType"];
-    switch (type) {
-        case 0:
-        {
-            [parameter setObject:@"2" forKey:@"orderType"];
-        }
-            break;
-        case 1:
-        {
-            [parameter setObject:cardVoucher forKey:@"cardVoucher"];
-            [parameter setObject:@"1" forKey:@"orderType"];
-        }
-            break;
-        case 2:{
-            [parameter setObject:@"0" forKey:@"orderType"];
-            [Common pushUrl:@"OilCardPayCompleteViewController" withTarget:self withParamer:parameter];
-            return;
-        }
-            break;
-        case 3:{
-            //商品
-            [parameter setObject:@"3" forKey:@"orderType"];
-        }
-            break;
-        case 4:{
-            [parameter setObject:@"4" forKey:@"orderType"];
-            [Common pushUrl:@"OrderCompleteViewController" withTarget:self withParamer:parameter];
-            return;
-        }
-            break;
-        case 5:{
-            [parameter setObject:@"5" forKey:@"orderType"];
-        }
-            break;
-            
-        case 7:{
-            [parameter setObject:@"7" forKey:@"orderType"];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    [Common pushUrl:@"OrderCompleteViewController" withTarget:self withParamer:parameter];
 }
 
 @end

@@ -12,7 +12,25 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (DrawImage)
 
-+(UIImage *)addGoodsImage:(UIImage *)GoodsImg GoodTitle:(NSString *)Goodtitle PriceText:(NSString *)PriceText CashText:(NSString *)CashText TicketText:(NSString *)TicketText QcodeImg:(UIImage *)QcodeImg isDrawLine:(BOOL)isDrawLine;
++ (UIImage *)imageWithColor:(UIColor *)color Size:(CGSize)size;
+
++ (UIImage *)compressImage:(UIImage *)image toByte:(NSUInteger)maxLength;
+
+-(NSData *)compressWithMaxLength:(NSUInteger)maxLength;
+
+
+-(UIImage *)circleImage:(CGRect)rect;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
+
+
++(UIImage *)addWatemarkTextAfteriOS7_WithLogoImageTimeText:(NSString *)TimeText TitleText:(NSString *)TitleText contentText:(NSString *)contentText;
+
+-(UIImage *)addWatemarkTextAfteriOS7_WithLogoImageTimeText:(NSString *)TimeText Qcode:(UIImage *)image;
+
+-(UIImage *)addWatemarkTextAfteriOS7_WithImageQcode:(UIImage *)image;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

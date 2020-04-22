@@ -6,18 +6,9 @@
 //  Copyright © 2018年 王师傅 Mac. All rights reserved.
 //
 
-#ifndef eleoke_h
-
-
-
-#define eleoke_h
-
-
 #ifdef DEBUG //开发阶段
 
 #define NSLog(format,...) printf("%s\n",[[NSString stringWithFormat:(format), ##__VA_ARGS__] UTF8String])
-
-
 #else //发布阶段
 
 #define NSLog(...)
@@ -25,7 +16,33 @@
 #endif
 
 
-
+#import <UIKit/UIKit.h>
+#import "AlerShowManager.h"
+#import <Foundation/Foundation.h>
+#import "UINavigationBar+BackImageView.h"
+#import "YLSConstant.h"
+#import "WYHTTPSessionManager.h"
+#import "HttpRequest.h"
+#import "UIView+Additions.h"
+#import "NSString+Common.h"
+#import "LoginUser.h"
+#import "Common.h"
+#import "IPhoneRightPhoneAndPwdSingleton.h"
+#import "AppDelegate.h"
+#import <MJRefresh.h>
+#import "BaseNavigationController.h"
+#import "BaseViewController.h"
+#import <Masonry.h>
+#import <RegexKitLite.h>
+#import "UIColor+ColorChange.h"
+#import <AFNetworking.h>
+#import <MJExtension.h>
+#import <SDWebImageManager.h>
+#import <UIButton+WebCache.h>
+#import "FGContentView.h"
+#import "FGScrollSegmentView.h"
+#import "FGScrollviewDelegate.h"
+#import "UIViewController+addNewFunction.h"
 #define UISCREENWIDTH [UIScreen mainScreen].bounds.size.width
 #define UISCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -44,26 +61,13 @@
 #define APPid @"624766110637531136"
 #define KHistorySearchPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"Searchhistories.plist"]
 
-#import <UIKit/UIKit.h>
-#import "AlerShowManager.h"
-#import <Foundation/Foundation.h>
-#import "ShowStateView.h"
-#import "SucceedModel.h"
-#import "UINavigationBar+BackImageView.h"
-#import "UIView+WHC_ViewProperty.h"
+
 //手机系统版本
 
 #define phoneVersion [[UIDevice currentDevice] systemVersion]
 
 #define HeadDefault [UIImage imageNamed:@"头像"]
 
-#define EleokeUrl @"http://www.eleoke.com/cx.eleoke/"
-
-//@"http://otenda.project.njagan.org/cx.otenda/"
-
-//@"http://www.aganyun.com/cx.otenda/"
-
-//#define bihutest @"http://otenda.project.njagan.org/cx.otenda/"
 
 
 #define kDevice_iPhoneX \
@@ -87,7 +91,7 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 #define userdocPath  [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.plist"]
 
 
-#define titleColor [UIColor colorWithHexString:@"#1A1A1A"]
+#define AppThemeColor [UIColor colorWithHexString:@"#1A1A1A"]
 
 #define LoginOut  @"FungusLoginOut"
 #define LoginIn  @"FungusLoginIn"
@@ -96,9 +100,5 @@ isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bo
 
 
 #define buttonSelectBackgroundColor [UIColor colorWithHexString:@"#F98040"]
-#define buttonSelectTitleColor [UIColor colorWithHexString:@"#FFFFFF"]
+#define buttonSelectAppThemeColor [UIColor colorWithHexString:@"#FFFFFF"]
 
-
-
-
-#endif

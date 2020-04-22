@@ -10,9 +10,6 @@
 
 @interface HomeViewController : UIViewController
 
-
-
-
 @property(nonatomic,strong) UITableView *socially;
 
 @property(nonatomic,strong) UITextView *bungerly;

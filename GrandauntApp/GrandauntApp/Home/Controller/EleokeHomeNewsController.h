@@ -7,9 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-
-#import "FGScrollviewDelegate.h"
-
 @interface EleokeHomeNewsController : UITableViewController<FGScrollPageViewChildVcDelegate>
 
 -(void)SeachContent:(NSString * )Str;

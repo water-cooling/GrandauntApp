@@ -8,14 +8,10 @@
 
 #import "EleokeHomePolicyController.h"
 #import "HomeNewsCell.h"
-#import <MJRefresh.h>
-#import "WebViewController.h"
-#import "HomeUntility.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImageView+WebCache.h>
 
 @interface EleokeHomePolicyController ()
 
-@property(nonatomic,strong) PolicysListResponseModel * response;
 @property(nonatomic,copy)NSString * seachStr;
 @property(nonatomic,assign)NSInteger DownIndex;
 @end
@@ -69,51 +65,7 @@
 
 
 -(void)loadingHomeNewsDataLoc:(NSInteger)Loc count:(NSInteger)count tTitleLike:(NSString * )Str refresh:(BOOL)isdown{
-    [HomeUntility GetHomegetPolicyspageNo:Loc pageSize:count tTitleLike:Str callback:^(PolicysListResponseModel *Response, FGError *error) {
-        
-        if (isdown) {
-            
-            [self.tableView.mj_header endRefreshing];
-            
-            if (Response.rows.count == 0) {
-                
-                [EleokeShowManager showBriefAlert:@"暂无数据"];
-            }
-            
-        }else
-        {
-            if (Response.rows.count == 0) {
-                
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                return ;
-            }
-            [self.tableView.mj_footer endRefreshing];
-        }
-        if (!error) {
-            
-            if (isdown) {
-                
-                self.response = Response;
-                
-            }else
-            {
-                
-                [self.response.rows addObjectsFromArray:Response.rows];
-                
-            }
-            
-         
-            
-            [self.tableView reloadData];
-        }else
-        {
-            
-            [EleokeShowManager showBriefAlert:error.descriptionStr];
-        }
-        
-        
-    }];
-    
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,7 +84,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return self.response ? self.response.rows.count : 0;
+    return  0;
 }
 
 
@@ -143,15 +95,7 @@
     HomeNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeNewsCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
-    PolicysListModel * model = self.response.rows[indexPath.row];
-    
-    cell.TitleLab.text = model.tTitle;
-    
-    [cell.RightIcon sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage new] options:SDWebImageLowPriority];
-
-    
-    cell.TimeLab.text = [NSString stringWithFormat:@"%@ %ld %@",model.cFrom,(long)model.tDjcs,model.processDate];
+   
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -162,26 +106,8 @@
     return 105;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    PolicysListModel * model = self.response.rows[indexPath.row];
-    
-    [HomeUntility NewsLick:model.ID callback:^(SucceedModel *success, FGError *error) {
-        
-        if (!error) {
-            
-            WebViewController * web = [[WebViewController alloc]init];
-            
-            web.linkStr = model.detailH5;
-            web.title = @"新闻政策详情";
-            web.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:web animated:YES];
-        }
-        
-        
-    }];
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  MBManager.h
+//  AlerShowManager.h
 //  MBProgressDemo
 
 //  Created by hungryBoy on 16/1/23.

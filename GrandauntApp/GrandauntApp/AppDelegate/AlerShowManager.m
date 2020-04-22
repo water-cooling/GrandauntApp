@@ -1,5 +1,5 @@
 //
-//  MBManager.m
+//  AlerShowManager.m
 //  MBProgressDemo
 //
 //  Created by hungryBoy on 16/1/23.
@@ -187,7 +187,7 @@ BOOL isShowGloomy;//是否显示深色背景
 #pragma mark - 隐藏提示框
 +(void)hideAlert{
     dispatch_async(dispatch_get_main_queue(), ^{
-        MBProgressHUD *hud = [MBManager HUDForView:gloomyView];
+        MBProgressHUD *hud = [AlerShowManager HUDForView:gloomyView];
 #if 1
         gloomyView.frame = CGRectZero;
         gloomyView.center = prestrainView ? prestrainView.center: [UIApplication sharedApplication].keyWindow.center;
@@ -224,7 +224,7 @@ BOOL isShowGloomy;//是否显示深色背景
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (isAvalibleTouch) {
-        [MBManager hideAlert];
+        [AlerShowManager hideAlert];
     }
 }
 
