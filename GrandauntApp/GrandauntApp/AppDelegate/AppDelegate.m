@@ -14,6 +14,7 @@
 #import <UMSocialWechatHandler.h>
 #import <UMSocialQQHandler.h>
 #import <UMShare/UMShare.h>
+#import <BUAdSDK/BUAdSDKManager.h>
 @interface AppDelegate ()
 
 @end
@@ -28,6 +29,20 @@
     [MobClick setCrashReportEnabled:YES];
     return YES;
 }
+// 设置穿山甲的SDK
+- (void)setupBUAdSDK {
+    //BUAdSDK requires iOS 9 and up
+    [BUAdSDKManager setAppID:[BUDAdManager appKey]];
+#if DEBUG
+    // Whether to open log. default is none.
+    [BUAdSDKManager setLoglevel:BUAdSDKLogLevelDebug];
+#endif
+    [BUAdSDKManager setIsPaidApp:NO];
+    
+    // splash AD demo
+    [self addSplashAD];
+}
+
 
 
 - (void)configUSharePlatforms
